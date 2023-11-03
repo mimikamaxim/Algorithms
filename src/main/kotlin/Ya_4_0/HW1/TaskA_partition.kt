@@ -1,10 +1,14 @@
 package Ya_4_0.HW1
 
 import java.util.*
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import kotlin.random.Random
 
 object ooo {
     val arrFinal = arrayOf(1, 2)
     val arrfinal2 = listOf<Int>(1, 2)
+    val randomGenerator = Random(1)
 }
 
 fun main() {
@@ -18,19 +22,25 @@ fun main() {
 //    ooo.arrfinal2
 //    val smt = ooo.arrfinal2
 //    println(smt);
-    println()
+//    println()
     //5
     //1 9 4 2 3
     //3
-    val scanner: Scanner = Scanner(System.`in`)
-    val arrSize = scanner.nextInt();
-    val arr = IntArray(arrSize)
-    for (i in 0 until arrSize)
-        arr[i] = scanner.nextInt()
-    val pivot = scanner.nextInt()
-    val point = partition(arr,pivot)
-    println(pivot-1)
-    println(arr.size-pivot+1)
+//    val scanner: Scanner = Scanner(System.`in`)
+//    val arrSize = scanner.nextInt();
+//    val arr = IntArray(arrSize)
+//    for (i in 0 until arrSize)
+//        arr[i] = scanner.nextInt()
+//    val pivot = scanner.nextInt()
+//    val point = partition(arr, pivot, 0, arrSize - 1)
+//    println(arr.contentToString())
+//    println(arr.size - point.first)
+//    println(point.first)
+
+    val test = intArrayOf(1, 2, 8, 2, 3)
+    println(test.contentToString())
+    qSort(test, 0, test.size)
+    println(test.contentToString())
 }
 
 fun arrChange(arr: IntArray) {
@@ -42,13 +52,22 @@ fun arrChange(arr: IntArray) {
 // удовлетворяющие заданному предикату.
 
 //todo corner cases
+// также потестить скорость стандартной функции
 
-fun partition(arr: IntArray, pivot: Int): Int {
-    val arrLength = arr.size
-    var equalsPoint = 0
-    var greaterPoint = 0
-    var nextPoint = 0
-    while (nextPoint < arrLength) {
+fun qSort(arr: IntArray, start: Int, end: Int) { //inplace
+    val pair = partition(arr, ooo.randomGenerator.nextInt(start, end), start, end)
+    if (start != pair.first) qSort(arr, start, pair.first)
+    if (end != pair.second) qSort(arr, pair.second, end)
+}
+
+fun partition(arr: IntArray, pivot: Int, fromI: Int, toI: Int): Pair<Int, Int> {
+//    if (arr.isEmpty()) return 0
+//    if (arr.size==1) return if (arr[0]<pivot) 1 else 0
+//    val arrLength = arr.size
+    var equalsPoint = fromI
+    var greaterPoint = fromI
+    var nextPoint = fromI
+    while (nextPoint < toI) {
         when (intCompare(pivot, arr[nextPoint])) {
             1 -> {
                 nextPoint++
@@ -73,10 +92,10 @@ fun partition(arr: IntArray, pivot: Int): Int {
             }
         }
     }
-    return equalsPoint
+    return Pair(equalsPoint, greaterPoint)
 }
 
-fun intCompare(pivot: Int, current: Int): Int {
+private fun intCompare(pivot: Int, current: Int): Int {
     if (pivot < current) return 1
     return if (pivot > current) -1 else 0
 }
