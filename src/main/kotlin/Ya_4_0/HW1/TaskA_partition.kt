@@ -9,6 +9,7 @@ object ooo {
     val arrFinal = arrayOf(1, 2)
     val arrfinal2 = listOf<Int>(1, 2)
     val randomGenerator = Random(1)
+    var counterN = 0;
 }
 
 fun main() {
@@ -38,9 +39,12 @@ fun main() {
 //    println(point.first)
 
     val test = intArrayOf(1, 2, 8, 2, 3)
+    val time = System.currentTimeMillis()
+//    val test = intArrayOf(1,1,1,1,1,1,1,1,1,-1)
     println(test.contentToString())
     qSort(test, 0, test.size)
     println(test.contentToString())
+    println(System.currentTimeMillis()-time)
 }
 
 fun arrChange(arr: IntArray) {
@@ -52,10 +56,11 @@ fun arrChange(arr: IntArray) {
 // удовлетворяющие заданному предикату.
 
 //todo corner cases
-// также потестить скорость стандартной функции
+// также потестить скорость стандартной функции IntArray.partition
 
 fun qSort(arr: IntArray, start: Int, end: Int) { //inplace
-    val pair = partition(arr, ooo.randomGenerator.nextInt(start, end), start, end)
+    if (end-start<2) return
+    val pair = partition(arr, arr[ooo.randomGenerator.nextInt(start, end)], start, end)
     if (start != pair.first) qSort(arr, start, pair.first)
     if (end != pair.second) qSort(arr, pair.second, end)
 }
