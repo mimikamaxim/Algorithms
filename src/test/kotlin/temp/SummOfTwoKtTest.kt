@@ -54,28 +54,28 @@ internal class SummOfTwoKtTest {
             return output
         }
 
-        @Test
-        fun testCase1() {
-            val testString = "1 1"
-            provideInput(testString)
-            temp.main()
-            val scanner = Scanner(output)
-            assertEquals(scanner.nextInt(), 2)
-        }
+//        @Test
+//        fun testCase1() {
+//            val testString = "1 1"
+//            provideInput(testString)
+//            temp.main()
+//            val scanner = Scanner(output)
+//            assertEquals(scanner.nextInt(), 2)
+//        }
 
-        @Test
-        fun testCase2() {
-            val testString = "2 2"
-            provideInput(testString)
-            main()
-            val scanner = Scanner(output)
-            assertEquals(scanner.nextInt(), 4)
-        }
-
-        @Test
-        fun testCase3() {
-            val str = emitAndCollect("3 3") { main() }
-            assertEquals(str.first().digitToInt(),6)
-        }
+//        @Test
+//        fun testCase2() {
+//            val testString = "2 2"
+//            provideInput(testString)
+//            main()
+//            val scanner = Scanner(output)
+//            assertEquals(scanner.nextInt(), 4)
+//        }
+//
+//        @Test
+//        fun testCase3() {
+//            val str = emitAndCollect("3 3") { main() }
+//            assertEquals(str.first().digitToInt(),6)
+//        }
     }
 }

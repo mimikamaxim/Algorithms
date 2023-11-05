@@ -27,24 +27,24 @@ fun main() {
     //5
     //1 9 4 2 3
     //3
-//    val scanner: Scanner = Scanner(System.`in`)
-//    val arrSize = scanner.nextInt();
-//    val arr = IntArray(arrSize)
-//    for (i in 0 until arrSize)
-//        arr[i] = scanner.nextInt()
-//    val pivot = scanner.nextInt()
-//    val point = partition(arr, pivot, 0, arrSize - 1)
+    val scanner: Scanner = Scanner(System.`in`)
+    val arrSize = scanner.nextInt();
+    val arr = IntArray(arrSize)
+    for (i in 0 until arrSize)
+        arr[i] = scanner.nextInt()
+    val pivot = scanner.nextInt()
+    val point = partition(arr, pivot, 0, arrSize - 1)
 //    println(arr.contentToString())
-//    println(arr.size - point.first)
-//    println(point.first)
+    println(point.first)
+    println(arr.size - point.first)
 
-    val test = intArrayOf(1, 2, 8, 2, 3)
-    val time = System.currentTimeMillis()
-//    val test = intArrayOf(1,1,1,1,1,1,1,1,1,-1)
-    println(test.contentToString())
-    qSort(test, 0, test.size)
-    println(test.contentToString())
-    println(System.currentTimeMillis()-time)
+//    val test = intArrayOf(1, 2, 8, 2, 3)
+//    val time = System.currentTimeMillis()
+////    val test = intArrayOf(1,1,1,1,1,1,1,1,1,-1)
+//    println(test.contentToString())
+//    qSort(test, 0, test.size)
+//    println(test.contentToString())
+//    println(System.currentTimeMillis()-time)
 }
 
 fun arrChange(arr: IntArray) {
@@ -58,14 +58,14 @@ fun arrChange(arr: IntArray) {
 //todo corner cases
 // также потестить скорость стандартной функции IntArray.partition
 
-fun qSort(arr: IntArray, start: Int, end: Int) { //inplace
+private fun qSort(arr: IntArray, start: Int, end: Int) { //inplace
     if (end-start<2) return
     val pair = partition(arr, arr[ooo.randomGenerator.nextInt(start, end)], start, end)
     if (start != pair.first) qSort(arr, start, pair.first)
     if (end != pair.second) qSort(arr, pair.second, end)
 }
 
-fun partition(arr: IntArray, pivot: Int, fromI: Int, toI: Int): Pair<Int, Int> {
+private fun partition(arr: IntArray, pivot: Int, fromI: Int, toI: Int): Pair<Int, Int> {
 //    if (arr.isEmpty()) return 0
 //    if (arr.size==1) return if (arr[0]<pivot) 1 else 0
 //    val arrLength = arr.size
